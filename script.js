@@ -20,7 +20,6 @@ favorittButton.addEventListener("click", () => {
  */
 
 function toggleFav(card) {
-    console.log(card);
     // Hent ut bilde fra HTML
     let image = card.querySelector("img");
 
@@ -30,6 +29,33 @@ function toggleFav(card) {
         url: image.src,
         name: image.alt, 
     }
+let favoritt = loadFavoritter(); 
 
-    console.log(imageObject);
+favoritt.push(imageObject);
+
+//Lagre den oppdaterte listen u locol storage
+let updatedFavorittString = JSON.stringify(favoritt);
+
+localStorage.setItem("favoritt", updatedFavorittString);
+
+
+
+}
+
+function loadFavoritter() {
+
+    let favorittString = localStorage.getItem("favoritt");
+
+    let favoritt;
+
+    if (favorittString === null) {
+
+        favoritt = [];
+    } else {
+
+    //Hvis vi har vært her før, konventer tekst streng til array (liste)
+        favoritt = JSON.parse(favorittString);
+    }
+
+    return favoritt;
 }
