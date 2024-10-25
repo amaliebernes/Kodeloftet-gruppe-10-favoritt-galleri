@@ -14,8 +14,22 @@ favorittButton.addEventListener("click", () => {
 } );
     
 }
-
+/**
+ * 
+ * @param {Element} card 
+ */
 
 function toggleFav(card) {
     console.log(card);
+    // Hent ut bilde fra HTML
+    let image = card.querySelector("img");
+
+//Lag bilde objectet 
+
+    let imageObject = {
+        url: image.src,
+        name: image.alt, 
+    }
+
+    console.log(imageObject);
 }
